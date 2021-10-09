@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {% if request.user.is_authenticated %}
+    <p>Hello {{ request.user.username }}, your details are as follows:</p>
+    <div>
+      <p>Email :{{request.user.email}}</p>
+      <p>Address :{{request.user.address}}</p>
+    </div>
+    <p><a href="{% url 'account' %}">Account Details</a></p>
+    <p><a href="{% url 'logout' %}">Logout</a></p>
+    <!-- <p><a href="{% url 'logout' %}">Logout</a></p> -->
+
+    {% else %}
+    <a href="{% url 'register' %}"
+      >Register | <a href="{% url 'login' %}">Login</a></a
+    >
+    {% endif %}
+  </body>
+</html>
